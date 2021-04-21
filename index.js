@@ -88,18 +88,36 @@ Car.prototype.fill = function(gallons) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+
+ function Baby(prop) {
+   Person.call(this, prop);
+   this.favoriteToy = prop.favoriteToy;
   }
- 
+  Baby.prototype = Object.create(Person.prototype);
+  Baby.prototype.play = function() {
+    return `Playing with ${this.favoriteToy}`;
+  }
   
+  // const kiddo = new Baby ({
+  //   name: 'Kiddo',
+  //   age: 1,
+  //   favoriteToy: 'hammer'
+  // })
+
+  const kiddo = new Baby('Kiddo', 1, 'hammer');
+
+  // const kiddo = new Baby('Lucy', 5, 'trains');
+
+  console.log(kiddo.play());
+
+
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Window - When global, "this" will return the object tied to the window.
+    2. Implicit - When "this" comes before a .function, the object before the dot is "this".
+    3. Explicit - "this" can be assigned explicity by being overridden with functions such as .call.
+    4. New - When an object is created by a constructor function, "this" will refer to that object.
   */
   
   
