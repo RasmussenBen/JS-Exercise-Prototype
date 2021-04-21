@@ -89,27 +89,17 @@ Car.prototype.fill = function(gallons) {
           + Should return a string "Playing with x", x being the favorite toy.
   */
 
- function Baby(prop) {
-   Person.call(this, prop);
-   this.favoriteToy = prop.favoriteToy;
+ function Baby(name, age, favoriteToy) {
+   Person.call(this, name, age);
+   this.favoriteToy = favoriteToy;
   }
   Baby.prototype = Object.create(Person.prototype);
   Baby.prototype.play = function() {
     return `Playing with ${this.favoriteToy}`;
   }
   
-  // const kiddo = new Baby ({
-  //   name: 'Kiddo',
-  //   age: 1,
-  //   favoriteToy: 'hammer'
-  // })
-
   const kiddo = new Baby('Kiddo', 1, 'hammer');
-
-  // const kiddo = new Baby('Lucy', 5, 'trains');
-
   console.log(kiddo.play());
-
 
   /* 
     TASK 4
